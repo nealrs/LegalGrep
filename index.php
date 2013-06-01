@@ -77,25 +77,18 @@ echo'<!DOCTYPE html>
     <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
     
     <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
+      body {padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */}
     </style>
-    
-	<!--<link href="assets/css/print.css" rel="stylesheet" media="print" />-->
 
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
-
-	
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	
-<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
+	<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
 	<script type="text/javascript">
@@ -107,12 +100,12 @@ echo'<!DOCTYPE html>
        	 });
    	 });
 	</script>
-<!---- END HIGHLIGHT TEXT AREA ---->
+	<!---- END HIGHLIGHT TEXT AREA ---->
 
-<!---- SHARE THIS BLOCK ------->
+	<!---- SHARE THIS BLOCK ------->
 	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 	<script type="text/javascript">stLight.options({publisher: "ur-fac0377b-c7eb-18d4-b99f-7057b5df1fa", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
-<!---- END SHARE THIS BLOCK --->
+	<!---- END SHARE THIS BLOCK --->
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -129,7 +122,7 @@ echo'<!DOCTYPE html>
 
   <body>
   
- <!-- BEGIN Google Analytics -->
+ 	<!-- BEGIN Google Analytics -->
 	<script>
   		(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
   		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -140,7 +133,7 @@ echo'<!DOCTYPE html>
   		ga(\'send\', \'pageview\');
 
 	</script>
- <!-- END Google Analytics -->
+ 	<!-- END Google Analytics -->
 
     <div class="navbar navbar-inverse navbar-fixed-top hideme">
       <div class="navbar-inner">
@@ -210,8 +203,6 @@ echo'<!DOCTYPE html>
 		
 				<div class = "row ">	
 					<div class = "span10 ">
-						
-						<!---<div class = "hide_def"><hr/><p></p></div>--->
 
 						<div class = "hide_def"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
@@ -237,7 +228,6 @@ echo'<!DOCTYPE html>
 						<script type="text/javascript"
 							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 						</script>
-						
 						
 					</div>
 				</div>
