@@ -1,4 +1,4 @@
-/* obviously, you'll want to change the analytics code to reflect your own domain and UA id /*
+<!-- obviously, you need to change the analytics below code to reflect your own domain and UA id -->
 
 
 <script>
