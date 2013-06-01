@@ -2,6 +2,7 @@
 
 /********** ********** ********** ********** ********** **********
  * LegalGrep © 2013 Neal [HTML/CSS/PHP] & Eric [RegEx]
+ * Get to forking: https://github.com/nealrs/LegalGrep
  * Depends on Bootstrap, jQuery, highlightTextarea
  * Function:
  *  
