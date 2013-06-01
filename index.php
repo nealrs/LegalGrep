@@ -196,7 +196,7 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Print to export full highlighted document" class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Print to export full highlighted document. Remember to turn on background colors & images." class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
 					</div>
 			
 				</div>
