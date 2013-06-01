@@ -11,4 +11,4 @@ How<br/>
 Bootstrap, PHP, jQuery, <a href="https://github.com/mistic100/">mistic100</a>'s <a href="https://github.com/mistic100/jQuery-highlightTextarea">highlightTextarea plugin</a>, and a whole lot of RegEx love from <a href="https://github.com/EricJustusson">@ericjustusson</a>
 
 Questions? Comments? Bugs?<br/>
-contact <a href="https://twitter.com/nealrs">@nealrs</a>
+contact <a href="https://twitter.com/nealrs">@nealrs</a> Copyright 2013
