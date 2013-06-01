@@ -2,8 +2,8 @@
 
 /********** ********** ********** ********** ********** **********
  * LegalGrep © 2013 Neal [HTML/CSS/PHP] & Eric [RegEx]
- * Depends on Bootstrap, jQuery, highlightTextarea, FPDF
- * Fuction:
+ * Depends on Bootstrap, jQuery, highlightTextarea
+ * Function:
  *  
  *  inputs: 
  *   A - search term 1 (may include wildcard characters)
@@ -17,7 +17,7 @@
  *  actions:
  *   - check text for pattern B within C of A
  *   - highlight E text
- *   o enable print of highlighted text
+ *   - enable print of highlighted text (via seperate stylesheet)
  *
  ********** ********** ********** ********** ********** **********/
 
@@ -72,7 +72,7 @@ echo'<!DOCTYPE html>
     <meta name="description" content = "LegalGrep highlights all passages which contain two key phrases within a set proximity.">
     <meta name="author" content = "Neal Shyam and Eric Justusson">
 
-    <!-- Le styles -->
+    <!-- CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
     
     <style>
@@ -88,13 +88,15 @@ echo'<!DOCTYPE html>
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
 
 	
-<!---- BEGIN HIGHLIGHT TEXT AREA ---->
+
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
-	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>	
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	
+<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
+	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
-
 	<script type="text/javascript">
    	 $(document).ready(function() {
       	  $("textarea").highlightTextarea({
@@ -105,8 +107,6 @@ echo'<!DOCTYPE html>
    	 });
 	</script>
 <!---- END HIGHLIGHT TEXT AREA ---->
-
-
 
 <!---- SHARE THIS BLOCK ------->
 	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -127,8 +127,19 @@ echo'<!DOCTYPE html>
   </head>
 
   <body>
+  
+ <!-- BEGIN Google Analytics -->
+	<script>
+  		(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
 
-';include_once("analytics.php");echo'
+  		ga(\'create\', \'UA-41047928-1\', \'nealshyam.com\');
+  		ga(\'send\', \'pageview\');
+
+	</script>
+ <!-- END Google Analytics -->
 
     <div class="navbar navbar-inverse navbar-fixed-top hideme">
       <div class="navbar-inner">
