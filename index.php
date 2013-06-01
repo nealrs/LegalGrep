@@ -92,11 +92,21 @@ echo'<!DOCTYPE html>
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
 	<script type="text/javascript">
    	 $(document).ready(function() {
-      	  $("textarea").highlightTextarea({
-        	      words: ["('.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+)","('.$term_bs.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_as.'[^a-z0-9]*\\\s+)"],
-        	      caseSensitive: false
-        	      
-       	 });
+   	 	$("#go").click(function() {
+   	 		  
+   	 		  var terma = $("#terma").val();
+			  var termb = $("#termb").val();
+			  var bounds = $("#bounds").val();
+			  var wordRegex = "\\\S*[\\\s]+";
+			  
+	          alert("Term A: " + terma + " , Term B: " + termb + ", Proximity: " + bounds);
+   	 		  
+			  $("textarea").highlightTextarea({
+					  words: ["('.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+)","('.$term_bs.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_as.'[^a-z0-9]*\\\s+)"],
+					  caseSensitive: false
+				  
+			 });
+     	}); 
    	 });
 	</script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
@@ -159,8 +169,6 @@ echo'<!DOCTYPE html>
     <div class = "container ">    	
     	<div class = "row ">
 			<div class = "span10 ">
-			<form action="index.php" method="post">
-				<!--<legend>Enter search terms, bounds, and source text.</legend>-->
 				<legend class="hideme">Highlight all passages containing terms A & B within proximity C. Print to Export.</legend>
 				
 				<div class = "row hideme">
@@ -173,15 +181,15 @@ echo'<!DOCTYPE html>
 				<div class = "row hideme">	
 					
 					<div class = "span3">
-						<input type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
+						<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
 					</div>
 			
 					<div class = "span3">
-						<input type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+						<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
 					</div>
 			
 					<div class = "span2">
-						<select name="bounds" class="input-block-level">
+						<select id ="bounds" name="bounds" class="input-block-level">
 							<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
 							<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
 							<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
@@ -191,7 +199,7 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button type="submit" data-toggle="tooltip" title="Click to highlight!" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
+						<button id ="go" type="button" data-toggle="tooltip" title="Click to highlight!" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
 					</div>
 			
 					<div class = "span1">
@@ -209,7 +217,6 @@ echo'<!DOCTYPE html>
 						
 					</div>
 				</div>
-			</form>
 			</div>
 			
 			<div class = "span2 hidden-tablet hidden-phone hideme">
@@ -231,7 +238,7 @@ echo'<!DOCTYPE html>
 					</div>
 				</div>
 			</div>
-			</form>
+			<!--</form>-->
 		<script>$(".tip").tooltip({placement:"bottom"})</script>	
     	</div>
     	
