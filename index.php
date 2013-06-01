@@ -4,7 +4,6 @@
  * LegalGrep © 2013 Neal [HTML/CSS/PHP] & Eric [RegEx]
  * Get to forking: https://github.com/nealrs/LegalGrep
  * Depends on Bootstrap, jQuery, highlightTextarea
- * Function:
  *  
  *  inputs: 
  *   A - search term 1 (may include wildcard characters)
@@ -17,7 +16,7 @@
  *  
  *  actions:
  *   - check text for pattern B within C of A
- *   - highlight E text
+ *   - highlight matching text E
  *   - enable print of highlighted text (via seperate stylesheet)
  *
  ********** ********** ********** ********** ********** **********/
