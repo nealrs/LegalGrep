@@ -94,7 +94,7 @@ echo'<!DOCTYPE html>
 	<script type="text/javascript">
    	 $(document).ready(function() {
       	  $("textarea").highlightTextarea({
-        	      words: ["'.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+"],
+        	      words: ["('.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+)","('.$term_bs.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_as.'[^a-z0-9]*\\\s+)"],
         	      caseSensitive: false
         	      
        	 });
