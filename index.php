@@ -1,26 +1,5 @@
 <?php
 
-/********** ********** ********** ********** ********** **********
- * LegalGrep © 2013 Neal [HTML/CSS/PHP] & Eric [RegEx]
- * Get to forking: https://github.com/nealrs/LegalGrep
- * Depends on Bootstrap, jQuery, highlightTextarea
- *  
- *  inputs: 
- *   A - search term 1 (may include wildcard characters)
- *   B - search term 2 (may include wildcard characters)
- *   C - tolerance (+/- words)
- *   D - input text (pasted into textbox)
- *  
- *  outputs:
- *   E - highlighted / matched text
- *  
- *  actions:
- *   - check text for pattern B within C of A
- *   - highlight matching text E
- *   - enable print of highlighted text (via seperate stylesheet)
- *
- ********** ********** ********** ********** ********** **********/
-
 // set defaults
 	$term_a = "in*"; 
 	$term_as = "in*";
@@ -31,6 +10,8 @@
 	$term_bs = "*em*";
 	$term_bs = preg_quote($term_b);
 	$term_bs = str_replace('*', '[\\\S]*', $term_bs);
+	
+	$bounds = 10;
 
 	$input_text = "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum dolor sed dui pretium sit amet aliquam ipsum fringilla. Fusce eget sem et orci feugiat interdum in ac dui. Integer nec diam semper massa vestibulum egestas vel venenatis ante. Curabitur sollicitudin dui non nisl vestibulum vestibulum varius neque convallis. Maecenas sem sem, fringilla ut tincidunt convallis, accumsan et leo. Integer ultrices nisi vitae nulla rhoncus vestibulum. In et arcu neque.
@@ -44,10 +25,9 @@ Aliquam et arcu nec ante fermentum placerat id quis neque. Vivamus cursus nunc a
 Nam consequat sagittis mollis. Sed faucibus egestas nunc, non rutrum elit fringilla ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam iaculis purus eu nibh aliquet et facilisis enim interdum. Aliquam convallis laoreet elit et volutpat. Duis posuere blandit auctor. Integer tincidunt tellus gravida dui fringilla in pellentesque purus ultricies. Nunc a tempus tortor. Aenean eu nunc in justo venenatis porta. Etiam viverra quam vitae odio aliquam sed accumsan magna dignissim. Aliquam erat volutpat. Aliquam feugiat ultrices tempor. Sed in nisi elit. Nulla facilisi. Mauris orci est, pharetra in pellentesque non, consectetur nec ante.
 ";
 
-	$bounds = 10;
-
 $wordRegex = '\\\S*[\\\s]+';
 $bookmarklet = "javascript:(function(){var t=window.getSelection?window.getSelection().toString():document.selection.createRange().text;t=encodeURIComponent(t);window.location='http://nealshyam.com/legal/index.php?input_text='+t;})()";
+
 // Output
 echo'<!DOCTYPE html>
 <html lang="en">
@@ -194,7 +174,7 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button id ="go" type="button" data-toggle="tooltip" title="Click to highlight!" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
+						<button id ="go" type="button" data-toggle="tooltip" title="Click to highlight" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
 					</div>
 			
 					<div class = "span1">
@@ -233,7 +213,6 @@ echo'<!DOCTYPE html>
 					</div>
 				</div>
 			</div>
-			<!--</form>-->
 		<script>$(".tip").tooltip({placement:"bottom"})</script>	
     	</div>
     	
