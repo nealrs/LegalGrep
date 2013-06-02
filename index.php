@@ -59,35 +59,53 @@ echo'<!DOCTYPE html>
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
 	<script type="text/javascript" src="assets/js/preg_quote.js"></script>
 	<script type="text/javascript">
-   	 $(document).ready(function() {
-   	 	// initialize plugin
-   	 	$("textarea").highlightTextarea({ caseSensitive: false });
-   	 	$("#go").click(function() {
-   	 		  
-   	 		  var terma_s = $("#terma").val();
-   	 		  var terma = preg_quote(terma_s);
-   	 		  	console.log(terma);
-   	 		  var terma = terma_s.replace(/[*]/gi, "[\\\S]*");
-			  	console.log(terma);
-			  
-			  var termb_s = $("#termb").val();
-			  var termb = preg_quote(termb_s);
-			  	console.log(termb);
-			  var termb = termb_s.replace(/[*]/gi, "[\\\S]*");
-			  	console.log(termb);
-			  
-			  var bounds = $("#bounds").val();
-			  
-			  var wordregex = "\\\S*[\\\s]+";
-			  	console.log(wordregex);
-			  
-	          alert("Term A: " + terma + " , Term B: " + termb + ", Proximity: " + bounds);
+        $(document).ready(function() {
+            // initialize plugin
+            $("textarea").highlightTextarea({ caseSensitive: false });
+            $("#go").click(function() {
+        	  
+                // define word RegEx
+                var wordRegex = "\\\S*[\\\s]+";
+                // define word boundry RegEx
+                var wordBoundary = "[^a-z0-9]*\\\s+";
 
-   	 		  $("textarea").highlightTextarea("setWords", ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)" , "("+ termb +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ terma +"[^a-z0-9]*\\\s+)"]);
-   	 		  $("textarea").highlightTextarea("highlight");
-     	}); 
-   	 });
-	</script>
+                // get values from form
+                var termA  = $("#terma").val();
+                var termB  = $("#termb").val();
+                var bounds = $("#bounds").val();
+
+                // build regex for in between words
+                var inBetweenWords = "(WORDREGEX){0,MAXWORDS}";
+                // fill with correct values
+                // done this way just to make it more readable
+                inBetweenWords = inBetweenWords.replace("WORDREGEX", wordRegex);
+                inBetweenWords = inBetweenWords.replace("MAXWORDS", (bounds - 2));
+
+                // escape any RegEx special characters
+                // from search terms
+                termA = preg_quote(termA);
+                termB = preg_quote(termB);
+
+                // replace wildcards (*) with wildcard RegEx on search terms
+                // the wildcard will be escaped from the preg_quote
+                // function, so search for escaped version
+                termA = termA.replace(/\\\\\*/g, "[\\\S]*");
+                termB = termB.replace(/\\\\\*/g, "[\\\S]*");
+
+                // append word boundary regex to terms
+                termA += wordBoundary;
+                termB += wordBoundary;
+
+                // build forward search regex string (i.e. A -> B)
+                var forwardSearch = wordBoundary + termA + inBetweenWords + termB;
+                // build forward search regex string (i.e. B -> A)
+                var reverseSearch = wordBoundary + termB + inBetweenWords + termA;
+
+                $("textarea").highlightTextarea("setWords", [forwardSearch, reverseSearch]);
+
+            });
+        });
+    </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
 
 	<!---- SHARE THIS BLOCK ------->
