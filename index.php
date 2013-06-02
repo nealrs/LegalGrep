@@ -60,6 +60,8 @@ echo'<!DOCTYPE html>
 	<script type="text/javascript" src="assets/js/preg_quote.js"></script>
 	<script type="text/javascript">
    	 $(document).ready(function() {
+   	 	// initialize plugin
+   	 	$("textarea").highlightTextarea({ caseSensitive: false });
    	 	$("#go").click(function() {
    	 		  
    	 		  var terma_s = $("#terma").val();
@@ -80,12 +82,9 @@ echo'<!DOCTYPE html>
 			  	console.log(wordregex);
 			  
 	          alert("Term A: " + terma + " , Term B: " + termb + ", Proximity: " + bounds);
-   	 		  
-			  $("textarea").highlightTextarea({
-					  words: ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)" , "("+ termb +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ terma +"[^a-z0-9]*\\\s+)"],
-					  caseSensitive: false
-				  
-			 });
+
+   	 		  $("textarea").highlightTextarea("setWords", ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)" , "("+ termb +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ terma +"[^a-z0-9]*\\\s+)"]);
+   	 		  $("textarea").highlightTextarea("highlight");
      	}); 
    	 });
 	</script>
