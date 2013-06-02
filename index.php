@@ -62,6 +62,7 @@ echo'<!DOCTYPE html>
         $(document).ready(function() {
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
+            
             $("#go").click(function() {
         	  
                 // define word RegEx
@@ -154,7 +155,7 @@ echo'<!DOCTYPE html>
           <ul class="nav">
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
-              <li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>
+              <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
 
             </ul>
