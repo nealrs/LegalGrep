@@ -21,29 +21,18 @@
  *
  ********** ********** ********** ********** ********** **********/
 
-// Retrieve, sanitize, and set defaults for form/post data
-if (!empty($_POST["term_a"])) {
-    $term_a = $_POST["term_a"];
+// set defaults
+	$term_a = "in*"; 
+	$term_as = "in*";
 	$term_as = preg_quote($term_a);
 	$term_as = str_replace('*', '[\\\S]*', $term_as);
-} else {$term_a = "in*"; $term_as = "in*";}
 
-if (!empty($_POST["term_b"])) {
-	$term_b = $_POST["term_b"];
+	$term_b = "*em*"; 
+	$term_bs = "*em*";
 	$term_bs = preg_quote($term_b);
 	$term_bs = str_replace('*', '[\\\S]*', $term_bs);
-} else {$term_b = "*em*"; $term_bs = "*em*";}
 
-// check input from posted form
-if (!empty($_POST["input_text"])){
-	$input_text = $_POST["input_text"];
-}
-// check input from bookmarklet
-else if (isset($_GET["input_text"])) {
-	$input_text = $_GET["input_text"];
-} 
-// else load in default / demo text
-else { $input_text = "
+	$input_text = "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum dolor sed dui pretium sit amet aliquam ipsum fringilla. Fusce eget sem et orci feugiat interdum in ac dui. Integer nec diam semper massa vestibulum egestas vel venenatis ante. Curabitur sollicitudin dui non nisl vestibulum vestibulum varius neque convallis. Maecenas sem sem, fringilla ut tincidunt convallis, accumsan et leo. Integer ultrices nisi vitae nulla rhoncus vestibulum. In et arcu neque.
 
 Nam pretium tellus ac libero sollicitudin ut bibendum tortor fermentum. Morbi sagittis urna at nisi ultrices feugiat. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit accumsan dignissim. Sed sagittis augue quis purus sodales sed pulvinar ipsum mattis. Curabitur ac felis nisl, eget scelerisque nisl. Etiam massa elit, imperdiet eu placerat vitae, interdum ullamcorper quam. Donec posuere sem vel mi elementum facilisis. Sed nec mauris sed massa euismod ornare.
@@ -53,11 +42,9 @@ Pellentesque tellus turpis, fringilla tempus laoreet eu, malesuada non enim. Nul
 Aliquam et arcu nec ante fermentum placerat id quis neque. Vivamus cursus nunc ac nibh viverra quis accumsan tortor gravida. Proin viverra mi eu erat vulputate vehicula. Donec ultricies, nunc ut pharetra rhoncus, nulla eros pharetra justo, non convallis diam ipsum ut arcu. Proin id lacus nisl. Fusce lacus eros, pharetra non porta sed, placerat pellentesque nulla. Fusce sit amet cursus diam. Ut a nisl non elit feugiat sollicitudin quis id orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 
 Nam consequat sagittis mollis. Sed faucibus egestas nunc, non rutrum elit fringilla ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam iaculis purus eu nibh aliquet et facilisis enim interdum. Aliquam convallis laoreet elit et volutpat. Duis posuere blandit auctor. Integer tincidunt tellus gravida dui fringilla in pellentesque purus ultricies. Nunc a tempus tortor. Aenean eu nunc in justo venenatis porta. Etiam viverra quam vitae odio aliquam sed accumsan magna dignissim. Aliquam erat volutpat. Aliquam feugiat ultrices tempor. Sed in nisi elit. Nulla facilisi. Mauris orci est, pharetra in pellentesque non, consectetur nec ante.
-";}
+";
 
-if (!empty($_POST["bounds"])) {
-	$bounds = $_POST["bounds"];
-} else {$bounds = 10;}
+	$bounds = 10;
 
 $wordRegex = '\\\S*[\\\s]+';
 $bookmarklet = "javascript:(function(){var t=window.getSelection?window.getSelection().toString():document.selection.createRange().text;t=encodeURIComponent(t);window.location='http://nealshyam.com/legal/index.php?input_text='+t;})()";
@@ -90,19 +77,27 @@ echo'<!DOCTYPE html>
 	<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
+	<script type="text/javascript" src="assets/js/preg_quote.js"></script>
 	<script type="text/javascript">
    	 $(document).ready(function() {
    	 	$("#go").click(function() {
    	 		  
-   	 		  var terma = $("#terma").val();
-			  var termb = $("#termb").val();
+   	 		  var terma_s = $("#terma").val();
+   	 		  var terma = preg_quote(terma_s, "g");
+   	 		  var terma = terma_s.replace("*", "[\\\S]*");
+			  
+			  var termb_s = $("#termb").val();
+			  var termb = preg_quote(termb_s, "g");
+			  var termb = termb_s.replace("*", "[\\\S]*");
+			  
 			  var bounds = $("#bounds").val();
-			  var wordRegex = "\\\S*[\\\s]+";
+			  
+			  var wordregex = "\\\S*[\\\s]+";
 			  
 	          alert("Term A: " + terma + " , Term B: " + termb + ", Proximity: " + bounds);
    	 		  
 			  $("textarea").highlightTextarea({
-					  words: ["('.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+)","('.$term_bs.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_as.'[^a-z0-9]*\\\s+)"],
+					  words: ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)"],
 					  caseSensitive: false
 				  
 			 });
