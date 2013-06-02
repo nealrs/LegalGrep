@@ -63,21 +63,26 @@ echo'<!DOCTYPE html>
    	 	$("#go").click(function() {
    	 		  
    	 		  var terma_s = $("#terma").val();
-   	 		  var terma = preg_quote(terma_s, "g");
-   	 		  var terma = terma_s.replace("*", "[\\\S]*");
+   	 		  var terma = preg_quote(terma_s);
+   	 		  	console.log(terma);
+   	 		  var terma = terma_s.replace(/[*]/gi, "[\\\S]*");
+			  	console.log(terma);
 			  
 			  var termb_s = $("#termb").val();
-			  var termb = preg_quote(termb_s, "g");
-			  var termb = termb_s.replace("*", "[\\\S]*");
+			  var termb = preg_quote(termb_s);
+			  	console.log(termb);
+			  var termb = termb_s.replace(/[*]/gi, "[\\\S]*");
+			  	console.log(termb);
 			  
 			  var bounds = $("#bounds").val();
 			  
 			  var wordregex = "\\\S*[\\\s]+";
+			  	console.log(wordregex);
 			  
 	          alert("Term A: " + terma + " , Term B: " + termb + ", Proximity: " + bounds);
    	 		  
 			  $("textarea").highlightTextarea({
-					  words: ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)"],
+					  words: ["("+ terma +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ termb +"[^a-z0-9]*\\\s+)" , "("+ termb +"[^a-z0-9]*\\\s+("+ wordregex +"){0,"+ (bounds-2) +"}"+ terma +"[^a-z0-9]*\\\s+)"],
 					  caseSensitive: false
 				  
 			 });
