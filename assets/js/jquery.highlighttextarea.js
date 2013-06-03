@@ -1,6 +1,8 @@
 /**
  * jQuery highlightTextarea 2.0
  *
+ * SUPER heavy modifications by @nealrs & @ericjustusson as part of LegalGrep project. Will fork eventually.
+ * 
  * Copyright 2012, Damien "Mistic" Sorel
  *    http://www.strangeplanet.fr
  *
