@@ -319,11 +319,18 @@
          * scope: private
          */
         this.applyText = function(text) {
-            // add extra space in case wildcard at end of word
-            // and matches on end of document
-            text = this.html_entities(text) + ' ';
+            
+            var spanStartHtml = "<span class=\"highlight lprint\" style=\"background-color:"+this.options.color+";\">";           
+            var spanEndHtml = "</span>";
+            var nonWordChars = "[^a-z0-9]*";
             
             if (this.options.words.length > 0) {
+                
+                // add extra space in case wildcard at end of word
+                // and matches on end of document
+                // also prepend a space
+                text = ' ' + this.html_entities(text) + ' ';
+
                 replace = new Array();
                 
                 for (var i=0; i<this.options.words.length; i++) {
@@ -331,9 +338,20 @@
                 }
 
                 text = text.replace(
-                  new RegExp('('+replace.join('|')+')', this.options.regParam), 
-                  "<span class=\"highlight lprint\" style=\"background-color:"+this.options.color+";\">$&</span>"
+                  new RegExp('('+replace.join('|')+')', 
+                  this.options.regParam), 
+                  spanStartHtml + "$&" + spanEndHtml
                 );
+
+                // this requires preg_quote function
+                // if matched spaces or non-words, remove them from the span
+                text = text.replace(new RegExp(preg_quote(spanStartHtml) + "(" + nonWordChars + ")", "gim"), "$1" + spanStartHtml);
+                text = text.replace(new RegExp("(" + nonWordChars + ")" + preg_quote(spanEndHtml), "gim"), spanEndHtml + "$1");
+
+                // strip space from beginning and end of string if present
+                // since we added these
+                text = text.replace(/^\s/, "");
+                text = text.replace(/\s$/, "");
             }
             
             this.$highlighter.html(text);
