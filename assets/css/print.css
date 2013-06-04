@@ -6,7 +6,6 @@
     margin: 10mm 10mm 10mm 10mm;  
 } 
 
-
 .hideme {
 	display: none !important;
 }
@@ -22,7 +21,7 @@ body {
 	
 	margin: 0px;
 }
- 
+/* 
 .highlightTextarea {
 	width: 100% !important; min-height: 100%;
 	overflow:visible !important;
@@ -64,3 +63,5 @@ body {
 textarea {
 	display:none;
 }
+
+*/

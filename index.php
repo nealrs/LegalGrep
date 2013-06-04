@@ -50,7 +50,6 @@ echo'<!DOCTYPE html>
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	
@@ -63,7 +62,7 @@ echo'<!DOCTYPE html>
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
             
-            $("#go").click(function() {
+            $(".toggleit").click(function() {
         	  
                 // define word RegEx
                 var wordRegex = "\\\S*[\\\s]+";
@@ -103,6 +102,18 @@ echo'<!DOCTYPE html>
                 var reverseSearch = wordBoundary + termB + inBetweenWords + termA;
 
                 $("textarea").highlightTextarea("setWords", [forwardSearch, reverseSearch]);
+				
+				// hide text area
+				$(".highlightTextarea").toggle();
+				
+				// toggle text area, copy innerhtml from highlighter class, and replace newlines with breaks.	
+				
+				$("#toggle").html($(".highlighter").html().replace(/\n/g, "<br />"));
+				$("#toggle").toggle();
+				
+				// toggle buttons based on classes to go from query to edit.
+				$(".toggleit").toggle();
+				
 
             });
         });
@@ -197,11 +208,13 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button id ="go" type="button" data-toggle="tooltip" title="Click to highlight" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Click to highlight" class=" toggleit tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-warning btn-block"><i class="icon-edit icon-white"></i></button>
+
 					</div>
 			
-					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Print to export full highlighted document. Remember to turn on background colors & images." class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
+					<div class = "span1" style="overflow:hidden;">
+						<button type="button" data-toggle="tooltip" title="Remember to turn on background colors & images." class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
 					</div>
 			
 				</div>
@@ -209,10 +222,11 @@ echo'<!DOCTYPE html>
 				<div class = "row ">	
 					<div class = "span10 ">
 
-						<div class = "hide_def"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
+						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea style= "overflow:hidden;" rows="22" class="input-block-level hideme lprint" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
+						<div class="hide" id ="toggle"></div>
 					</div>
 				</div>
 			</div>
