@@ -1,50 +1,19 @@
 <?php
 
-/********** ********** ********** ********** ********** **********
- * LegalGrep © 2013 Neal [HTML/CSS/PHP] & Eric [RegEx]
- * Get to forking: https://github.com/nealrs/LegalGrep
- * Depends on Bootstrap, jQuery, highlightTextarea
- * Function:
- *  
- *  inputs: 
- *   A - search term 1 (may include wildcard characters)
- *   B - search term 2 (may include wildcard characters)
- *   C - tolerance (+/- words)
- *   D - input text (pasted into textbox)
- *  
- *  outputs:
- *   E - highlighted / matched text
- *  
- *  actions:
- *   - check text for pattern B within C of A
- *   - highlight E text
- *   - enable print of highlighted text (via seperate stylesheet)
- *
- ********** ********** ********** ********** ********** **********/
-
-// Retrieve, sanitize, and set defaults for form/post data
-if (!empty($_POST["term_a"])) {
-    $term_a = $_POST["term_a"];
+// set defaults
+	$term_a = "in*"; 
+	$term_as = "in*";
 	$term_as = preg_quote($term_a);
 	$term_as = str_replace('*', '[\\\S]*', $term_as);
-} else {$term_a = "in*"; $term_as = "in*";}
 
-if (!empty($_POST["term_b"])) {
-	$term_b = $_POST["term_b"];
+	$term_b = "*em*"; 
+	$term_bs = "*em*";
 	$term_bs = preg_quote($term_b);
 	$term_bs = str_replace('*', '[\\\S]*', $term_bs);
-} else {$term_b = "*em*"; $term_bs = "*em*";}
+	
+	$bounds = 10;
 
-// check input from posted form
-if (!empty($_POST["input_text"])){
-	$input_text = $_POST["input_text"];
-}
-// check input from bookmarklet
-else if (isset($_GET["input_text"])) {
-	$input_text = $_GET["input_text"];
-} 
-// else load in default / demo text
-else { $input_text = "
+	$input_text = "
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum dolor sed dui pretium sit amet aliquam ipsum fringilla. Fusce eget sem et orci feugiat interdum in ac dui. Integer nec diam semper massa vestibulum egestas vel venenatis ante. Curabitur sollicitudin dui non nisl vestibulum vestibulum varius neque convallis. Maecenas sem sem, fringilla ut tincidunt convallis, accumsan et leo. Integer ultrices nisi vitae nulla rhoncus vestibulum. In et arcu neque.
 
 Nam pretium tellus ac libero sollicitudin ut bibendum tortor fermentum. Morbi sagittis urna at nisi ultrices feugiat. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit accumsan dignissim. Sed sagittis augue quis purus sodales sed pulvinar ipsum mattis. Curabitur ac felis nisl, eget scelerisque nisl. Etiam massa elit, imperdiet eu placerat vitae, interdum ullamcorper quam. Donec posuere sem vel mi elementum facilisis. Sed nec mauris sed massa euismod ornare.
@@ -54,14 +23,11 @@ Pellentesque tellus turpis, fringilla tempus laoreet eu, malesuada non enim. Nul
 Aliquam et arcu nec ante fermentum placerat id quis neque. Vivamus cursus nunc ac nibh viverra quis accumsan tortor gravida. Proin viverra mi eu erat vulputate vehicula. Donec ultricies, nunc ut pharetra rhoncus, nulla eros pharetra justo, non convallis diam ipsum ut arcu. Proin id lacus nisl. Fusce lacus eros, pharetra non porta sed, placerat pellentesque nulla. Fusce sit amet cursus diam. Ut a nisl non elit feugiat sollicitudin quis id orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 
 Nam consequat sagittis mollis. Sed faucibus egestas nunc, non rutrum elit fringilla ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam iaculis purus eu nibh aliquet et facilisis enim interdum. Aliquam convallis laoreet elit et volutpat. Duis posuere blandit auctor. Integer tincidunt tellus gravida dui fringilla in pellentesque purus ultricies. Nunc a tempus tortor. Aenean eu nunc in justo venenatis porta. Etiam viverra quam vitae odio aliquam sed accumsan magna dignissim. Aliquam erat volutpat. Aliquam feugiat ultrices tempor. Sed in nisi elit. Nulla facilisi. Mauris orci est, pharetra in pellentesque non, consectetur nec ante.
-";}
-
-if (!empty($_POST["bounds"])) {
-	$bounds = $_POST["bounds"];
-} else {$bounds = 10;}
+";
 
 $wordRegex = '\\\S*[\\\s]+';
 $bookmarklet = "javascript:(function(){var t=window.getSelection?window.getSelection().toString():document.selection.createRange().text;t=encodeURIComponent(t);window.location='http://nealshyam.com/legal/index.php?input_text='+t;})()";
+
 // Output
 echo'<!DOCTYPE html>
 <html lang="en">
@@ -84,22 +50,76 @@ echo'<!DOCTYPE html>
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	
 	<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
 	<script type="text/javascript" src="assets/js/jquery.highlighttextarea.js"></script>
+	<script type="text/javascript" src="assets/js/preg_quote.js"></script>
 	<script type="text/javascript">
-   	 $(document).ready(function() {
-      	  $("textarea").highlightTextarea({
-        	      words: ["('.$term_as.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_bs.'[^a-z0-9]*\\\s+)","('.$term_bs.'[^a-z0-9]*\\\s+('. $wordRegex .'){0,'.($bounds-2).'}'.$term_as.'[^a-z0-9]*\\\s+)"],
-        	      caseSensitive: false
-        	      
-       	 });
-   	 });
-	</script>
+        $(document).ready(function() {
+            // initialize plugin
+            $("textarea").highlightTextarea({ caseSensitive: false });
+            
+            $(".highlight_button").click(function() {
+        	  
+                // define word RegEx
+                var wordRegex = "\\\S*[\\\s]+";
+                // define word boundry RegEx
+                var wordBoundary = "[^a-z0-9]*\\\s+";
+
+                // get values from form
+                var termA  = $("#terma").val();
+                var termB  = $("#termb").val();
+                var bounds = $("#bounds").val();
+
+                // build regex for in between words
+                var inBetweenWords = "(WORDREGEX){0,MAXWORDS}";
+                // fill with correct values
+                // done this way just to make it more readable
+                inBetweenWords = inBetweenWords.replace("WORDREGEX", wordRegex);
+                inBetweenWords = inBetweenWords.replace("MAXWORDS", (bounds - 2));
+
+                // escape any RegEx special characters
+                // from search terms
+                termA = preg_quote(termA);
+                termB = preg_quote(termB);
+
+                // replace wildcards (*) with wildcard RegEx on search terms
+                // the wildcard will be escaped from the preg_quote
+                // function, so search for escaped version
+                termA = termA.replace(/\\\\\*/g, "[\\\S]*");
+                termB = termB.replace(/\\\\\*/g, "[\\\S]*");
+
+                // append word boundary regex to terms
+                termA += wordBoundary;
+                termB += wordBoundary;
+
+                // build forward search regex string (i.e. A -> B)
+                var forwardSearch = wordBoundary + termA + inBetweenWords + termB;
+                // build forward search regex string (i.e. B -> A)
+                var reverseSearch = wordBoundary + termB + inBetweenWords + termA;
+
+				// run search query & call plugin
+                $("textarea").highlightTextarea("setWords", [forwardSearch, reverseSearch]);
+				
+				// toggle text area & display div, copy innerhtml from highlighter into display div, and replace newlines with <br>
+				$(".highlightTextarea").hide(0);	
+				$("#toggle").html($(".highlighter").html().replace(/\n/g, "<br />"));
+				$("#toggle").show(0);
+				
+				// toggle print/search/edit buttons based on current visibility state.
+				//$(".toggleit").toggle(0);
+								
+            });
+            
+            $(".edit_button").click(function() {
+            	$(".highlightTextarea").show(0);
+            	$("#toggle").hide(0);
+            });
+        });
+    </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
 
 	<!---- SHARE THIS BLOCK ------->
@@ -148,7 +168,7 @@ echo'<!DOCTYPE html>
           <ul class="nav">
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
-              <li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>
+              <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
 
             </ul>
@@ -160,9 +180,7 @@ echo'<!DOCTYPE html>
     <div class = "container ">    	
     	<div class = "row ">
 			<div class = "span10 ">
-			<form action="index.php" method="post">
-				<!--<legend>Enter search terms, bounds, and source text.</legend>-->
-				<legend class="hideme">Highlight all passages containing terms A & B within proximity C. Print to Export.</legend>
+				<legend class="hideme">Highlight all passages containing terms A & B within a proximity of C words.</legend>
 				
 				<div class = "row hideme">
 					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
@@ -174,15 +192,15 @@ echo'<!DOCTYPE html>
 				<div class = "row hideme">	
 					
 					<div class = "span3">
-						<input type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
+						<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
 					</div>
 			
 					<div class = "span3">
-						<input type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+						<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
 					</div>
 			
 					<div class = "span2">
-						<select name="bounds" class="input-block-level">
+						<select id ="bounds" name="bounds" class="input-block-level">
 							<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
 							<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
 							<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
@@ -192,11 +210,12 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button type="submit" data-toggle="tooltip" title="Click to highlight!" class=" tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+
 					</div>
 			
 					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Print to export full highlighted document. Remember to turn on background colors & images." class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
 					</div>
 			
 				</div>
@@ -204,13 +223,13 @@ echo'<!DOCTYPE html>
 				<div class = "row ">	
 					<div class = "span10 ">
 
-						<div class = "hide_def"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
+						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea style= "overflow:hidden;" rows="22" class="input-block-level hideme lprint" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
+						<div class="hide" id ="toggle"></div>
 					</div>
 				</div>
-			</form>
 			</div>
 			
 			<div class = "span2 hidden-tablet hidden-phone hideme">
@@ -232,7 +251,6 @@ echo'<!DOCTYPE html>
 					</div>
 				</div>
 			</div>
-			</form>
 		<script>$(".tip").tooltip({placement:"bottom"})</script>	
     	</div>
     	
