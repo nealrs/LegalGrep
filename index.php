@@ -101,16 +101,15 @@ echo'<!DOCTYPE html>
                 // build forward search regex string (i.e. B -> A)
                 var reverseSearch = wordBoundary + termB + inBetweenWords + termA;
 
+				// run search query & call plugin
                 $("textarea").highlightTextarea("setWords", [forwardSearch, reverseSearch]);
 				
-				// hide text area
-				$(".highlightTextarea").toggle(0);
-				
-				// toggle text area, copy innerhtml from highlighter class, and replace newlines with breaks.	
+				// toggle text area & display div, copy innerhtml from highlighter into display div, and replace newlines with <br>
+				$(".highlightTextarea").toggle(0);	
 				$("#toggle").html($(".highlighter").html().replace(/\n/g, "<br />"));
 				$("#toggle").toggle(0);
 				
-				// toggle buttons based on classes to go from query to edit.
+				// toggle print/search/edit buttons based on current visibility state.
 				$(".toggleit").toggle(0);
 								
             });
