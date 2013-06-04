@@ -206,8 +206,8 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Click to highlight" class=" toggleit tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
-						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-primary btn-block"><i class="icon-pencil icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Click to highlight" class=" toggleit tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-primary btn-block"><i class=" icon-pencil icon-white"></i></button>
 
 					</div>
 			
