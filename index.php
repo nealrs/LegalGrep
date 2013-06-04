@@ -62,7 +62,7 @@ echo'<!DOCTYPE html>
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
             
-            $(".toggleit").click(function() {
+            $(".highlight_button").click(function() {
         	  
                 // define word RegEx
                 var wordRegex = "\\\S*[\\\s]+";
@@ -105,13 +105,18 @@ echo'<!DOCTYPE html>
                 $("textarea").highlightTextarea("setWords", [forwardSearch, reverseSearch]);
 				
 				// toggle text area & display div, copy innerhtml from highlighter into display div, and replace newlines with <br>
-				$(".highlightTextarea").toggle(0);	
+				$(".highlightTextarea").hide(0);	
 				$("#toggle").html($(".highlighter").html().replace(/\n/g, "<br />"));
-				$("#toggle").toggle(0);
+				$("#toggle").show(0);
 				
 				// toggle print/search/edit buttons based on current visibility state.
-				$(".toggleit").toggle(0);
+				//$(".toggleit").toggle(0);
 								
+            });
+            
+            $(".edit_button").click(function() {
+            	$(".highlightTextarea").show(0);
+            	$("#toggle").hide(0);
             });
         });
     </script>
@@ -205,13 +210,12 @@ echo'<!DOCTYPE html>
 					</div>
 			
 					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Click to highlight" class=" toggleit tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
-						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-primary btn-block"><i class=" icon-pencil icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
 
 					</div>
 			
-					<div class = "span1" style="overflow:hidden;">
-						<button type="button" data-toggle="tooltip" title="Remember to turn on background colors & images." class=" toggleit hide tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
+					<div class = "span1">
+						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
 					</div>
 			
 				</div>
