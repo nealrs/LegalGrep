@@ -178,7 +178,7 @@ echo'<!DOCTYPE html>
     <div class = "container ">    	
     	<div class = "row ">
 			<div class = "span10 ">
-				<legend class="hideme">Highlight all passages containing terms A & B within proximity C. Print to Export.</legend>
+				<legend class="hideme">Highlight all passages containing terms A & B within a proximity of C words.</legend>
 				
 				<div class = "row hideme">
 					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
@@ -209,12 +209,12 @@ echo'<!DOCTYPE html>
 			
 					<div class = "span1">
 						<button type="button" data-toggle="tooltip" title="Click to highlight" class=" toggleit tip btn btn-primary btn-block"><i class="icon-search icon-white"></i></button>
-						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-warning btn-block"><i class="icon-edit icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Click to edit" class=" toggleit hide tip btn btn-success btn-block"><i class="icon-edit icon-white"></i></button>
 
 					</div>
 			
 					<div class = "span1" style="overflow:hidden;">
-						<button type="button" data-toggle="tooltip" title="Remember to turn on background colors & images." class=" tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
+						<button type="button" data-toggle="tooltip" title="Remember to turn on background colors & images." class=" toggleit hide tip btn btn-inverse btn-block" onClick="window.print()"><i class="icon-print icon-white"></i></button>
 					</div>
 			
 				</div>
