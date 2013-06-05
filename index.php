@@ -62,7 +62,7 @@ echo'<!DOCTYPE html>
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
             
-            $("#hb").click(function() {
+            $(".highlight_button").click(function() {
         	  
                 // define word RegEx
                 var wordRegex = "\\\S*[\\\s]+";
@@ -106,17 +106,17 @@ echo'<!DOCTYPE html>
 				
 				// toggle text area & display div, copy innerhtml from highlighter into display div, and replace newlines with <br>
 				$(".highlightTextarea").hide(0);	
-				$("#display_div").html($(".highlighter").html().replace(/\n/g, "<br />"));
-				$("#display_div").show(0);				
+				$("#toggle").html($(".highlighter").html().replace(/\n/g, "<br />"));
+				$("#toggle").show(0);
+				
+				// toggle print/search/edit buttons based on current visibility state.
+				//$(".toggleit").toggle(0);
+								
             });
             
-            $("#eb").click(function() {
+            $(".edit_button").click(function() {
             	$(".highlightTextarea").show(0);
-            	$("#display_div").hide(0);	
-            });
-            
-            $("#pb").click(function() {
-            	window.print();
+            	$("#toggle").hide(0);
             });
         });
     </script>
@@ -209,20 +209,14 @@ echo'<!DOCTYPE html>
 						</select>
 					</div>
 			
-					<!--<div class = "span1">
+					<div class = "span1">
 						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
 
 					</div>
 			
 					<div class = "span1">
 						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
-					</div>-->				
-					
-					<div class="btn-group span2" data-toggle="buttons-radio">
-          				<button id ="hb" type="button" class=" btn btn-primary"><i class="icon-search icon-white"></i></button>
-          				<button id ="eb" type="button" class=" btn btn-primary"><i class="icon-pencil icon-white"></i></button>
-          				<button id ="pb" type="button" class=" btn btn-primary"><i class="icon-print icon-white"></i></button>
-        			</div>
+					</div>
 			
 				</div>
 		
@@ -233,7 +227,7 @@ echo'<!DOCTYPE html>
 					
 						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
-						<div class="hide" id ="display_div"></div>
+						<div class="hide" id ="toggle"></div>
 					</div>
 				</div>
 			</div>
