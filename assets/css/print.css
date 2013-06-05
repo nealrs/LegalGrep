@@ -60,7 +60,18 @@ body {
  	border: 0px;
 }
 */
+
 .highlightTextarea {
-	display:none;
+	display:none !important;
 }
+
+/*.highlightTextarea .lprint{
+	display:none;
+}*/
+
+textarea {
+	display:none !important;
+}
+
+
 
