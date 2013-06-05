@@ -126,11 +126,16 @@ echo'<!DOCTYPE html>
             	$("#toggle").hide(0);
             });
 
-            var showEditMode = function() {
+            var showEditMode = function(e, focus) {
                 var $editButton = $(".edit_button");
                 if ($editButton.is(":visible")) {
                     $editButton.click();
-                }
+                    if (focus) {
+                        window.setTimeout(function(){
+                            $("#text-to-query").focus();
+                        }, 0);
+                    }
+                }                
             };
 
             var showHighlightMode = function() {
@@ -141,11 +146,8 @@ echo'<!DOCTYPE html>
             $("#terma, #termb, #bounds").focus(showEditMode).blur(showHighlightMode);
 
             // switch back to edit mode highlighted text is clicked
-            $("#toggle").on("mousedown", function() {
-                showEditMode();
-                window.setTimeout(function(){
-                    $("#text-to-query").focus();
-                }, 0);
+            $("#toggle").on("mousedown click", function() {
+                showEditMode(null, true);
             });
 
             // switch back to edit mode highlighted text is clicked
