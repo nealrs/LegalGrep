@@ -117,6 +117,7 @@ echo'<!DOCTYPE html>
 								
             });
             
+            // handle edit button click event
             $(".edit_button").click(function() {
                 $(".buttons-container").show();
                 $(".highlighted-buttons-container").hide();
@@ -124,7 +125,36 @@ echo'<!DOCTYPE html>
             	$(".highlightTextarea").show(0);
             	$("#toggle").hide(0);
             });
-            
+
+            var showEditMode = function() {
+                var $editButton = $(".edit_button");
+                if ($editButton.is(":visible")) {
+                    $editButton.click();
+                }
+            };
+
+            var showHighlightMode = function() {
+                $(".highlight_button").click();
+            };
+
+            // switch to edit mode when focusing on input field and execute query on blur
+            $("#terma, #termb, #bounds").focus(showEditMode).blur(showHighlightMode);
+
+            // switch back to edit mode highlighted text is clicked
+            $("#toggle").on("mousedown", function() {
+                showEditMode();
+                window.setTimeout(function(){
+                    $("#text-to-query").focus();
+                }, 0);
+            });
+
+            // switch back to edit mode highlighted text is clicked
+            $("#text-to-query").blur(showHighlightMode);
+
+            // execute query when bounds change
+            $("#bounds").change(showHighlightMode);
+
+            // handle print click event
             $(".print_button").click(function() {
                 window.print();
             });
@@ -241,7 +271,7 @@ echo'<!DOCTYPE html>
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
 						<div class="hide" id ="toggle" style="padding:4px 6px;border:1px solid #fff;"></div>
 					</div>
