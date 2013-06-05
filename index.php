@@ -10,7 +10,7 @@
 	$term_bs = "*em*";
 	$term_bs = preg_quote($term_b);
 	$term_bs = str_replace('*', '[\\\S]*', $term_bs);
-	
+
 	$bounds = 10;
 
 	$input_text = "
