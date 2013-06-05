@@ -62,8 +62,8 @@ echo'<!DOCTYPE html>
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
             
-            $(".highlight_button").click(function() {
-        	  
+            $(".highlight_button").click(function() {        	
+
                 // define word RegEx
                 var wordRegex = "\\\S*[\\\s]+";
                 // define word boundry RegEx
@@ -110,13 +110,23 @@ echo'<!DOCTYPE html>
 				$("#toggle").show(0);
 				
 				// toggle print/search/edit buttons based on current visibility state.
-				//$(".toggleit").toggle(0);
+                $(".buttons-container").hide();
+				$(".highlighted-buttons-container").show();
+                // show highlighting
+                $(".highlighterContainer").show();
 								
             });
             
             $(".edit_button").click(function() {
+                $(".buttons-container").show();
+                $(".highlighted-buttons-container").hide();
+                $(".highlighterContainer").hide();
             	$(".highlightTextarea").show(0);
             	$("#toggle").hide(0);
+            });
+            
+            $(".print_button").click(function() {
+                window.print();
             });
         });
     </script>
@@ -208,15 +218,21 @@ echo'<!DOCTYPE html>
 							<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
 						</select>
 					</div>
-			
-					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+			        
+                    <div class="buttons-container">
+    					<div class = "span1">
+    						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
 
-					</div>
-			
-					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
-					</div>
+    					</div>
+                    </div>
+                    <div class="highlighted-buttons-container" style="display:none;">			     
+    					<div class = "span1">
+    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
+    					</div>
+                        <div class = "span1">
+                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-info btn-block"><i class=" icon-print icon-white"></i></button>
+                        </div>
+                    </div>
 			
 				</div>
 		
@@ -227,7 +243,7 @@ echo'<!DOCTYPE html>
 					
 						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
-						<div class="hide" id ="toggle"></div>
+						<div class="hide" id ="toggle" style="padding:4px 6px;border:1px solid #fff;"></div>
 					</div>
 				</div>
 			</div>
