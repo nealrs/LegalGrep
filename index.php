@@ -142,8 +142,8 @@ echo'<!DOCTYPE html>
                 $(".highlight_button").click();
             };
 
-            // switch to edit mode when focusing on input field and execute query on blur
-            $("#terma, #termb, #bounds").focus(showEditMode).blur(showHighlightMode);
+            // update highlight query on keydown
+            $("#terma, #termb, #bounds").keyup(showHighlightMode);
 
             // switch back to edit mode highlighted text is clicked
             $("#toggle").on("mousedown click", function() {
@@ -259,10 +259,10 @@ echo'<!DOCTYPE html>
                     </div>
                     <div class="highlighted-buttons-container" style="display:none;">			     
     					<div class = "span1">
-    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
+    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-info btn-block"><i class=" icon-pencil icon-white"></i></button>
     					</div>
                         <div class = "span1">
-                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-info btn-block"><i class=" icon-print icon-white"></i></button>
+                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-inverse btn-block"><i class=" icon-print icon-white"></i></button>
                         </div>
                     </div>
 			
