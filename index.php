@@ -259,10 +259,10 @@ echo'<!DOCTYPE html>
                     </div>
                     <div class="highlighted-buttons-container" style="display:none;">			     
     					<div class = "span1">
-    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-info btn-block"><i class=" icon-pencil icon-white"></i></button>
+    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
     					</div>
                         <div class = "span1">
-                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-inverse btn-block"><i class=" icon-print icon-white"></i></button>
+                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
                         </div>
                     </div>
 			
@@ -273,7 +273,7 @@ echo'<!DOCTYPE html>
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea id="text-to-query" style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:auto;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
 						<div class="hide" id ="toggle" style="padding:4px 6px;border:1px solid #fff;"></div>
 					</div>
