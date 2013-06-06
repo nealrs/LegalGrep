@@ -151,7 +151,7 @@ echo'<!DOCTYPE html>
             });
 
             // switch back to edit mode highlighted text is clicked
-            $("#text-to-query").blur(showHighlightMode);
+            $("#text-to-query").mouseout(showHighlightMode);
 
             // execute query when bounds change
             $("#bounds").change(showHighlightMode);
@@ -222,7 +222,7 @@ echo'<!DOCTYPE html>
     <div class = "container ">    	
     	<div class = "row ">
 			<div class = "span10 ">
-				<legend class="hideme">Highlight all passages containing terms A & B within a proximity of C words.</legend>
+				<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>
 				
 				<div class = "row hideme">
 					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
