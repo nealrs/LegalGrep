@@ -1,5 +1,11 @@
 <?php
 
+// Google parameters
+	$ad_client = "ca-pub-0448627255152048";
+	$ad_slot = "3239961821"; 
+	
+	
+
 // set defaults
 	$term_a = "in*"; 
 	$term_as = "in*";
@@ -285,9 +291,9 @@ echo'<!DOCTYPE html>
 				<div class = "row" style = "position:fixed; top:20;">
 					<div id = "adbox" class = "text-right " style="padding-left:20px;">
 						<script type="text/javascript"><!--
-						google_ad_client = "ca-pub-0448627255152048";
+						google_ad_client = "'.$ad_client.'";
 						/* Legal Grep */
-						google_ad_slot = "3239961821";
+						google_ad_slot = "'.$ad_slot.'";
 						google_ad_width = 160;
 						google_ad_height = 600;
 						//-->
