@@ -160,6 +160,9 @@ echo'<!DOCTYPE html>
             $(".print_button").click(function() {
                 window.print();
             });
+            
+            // initliaze highlight again
+            showHighlightMode();
         });
     </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
@@ -212,8 +215,7 @@ echo'<!DOCTYPE html>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
-
-            </ul>
+          </ul>              
           </div><!--/.nav-collapse -->
         </div>
       </div>
