@@ -232,47 +232,49 @@ echo'<!DOCTYPE html>
 			<div class = "span10 " >
 				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
 				
-				<div class = "row hideme ">
-					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
-					<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
-					<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
-					<div class = "span2"><p class="text-left">words of each other.</p></div>	
-				</div>
+				<div style="background:red; position:fixed; top:1;">
+					<div class = "row hideme ">
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
+						<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
+						<div class = "span2"><p class="text-left">words of each other.</p></div>	
+					</div>
 		
-				<div class = "row hideme">	
+					<div class = "row hideme">	
 					
-					<div class = "span3">
-						<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
-					</div>
+						<div class = "span3">
+							<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
+						</div>
 			
-					<div class = "span3">
-						<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
-					</div>
+						<div class = "span3">
+							<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+						</div>
 			
-					<div class = "span2">
-						<select id ="bounds" name="bounds" class="input-block-level">
-							<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
-							<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
-							<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
-							<option value = "50" '; if ($bounds == 50){echo 'selected';} echo'>50</option>
-							<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
-						</select>
+						<div class = "span2">
+							<select id ="bounds" name="bounds" class="input-block-level">
+								<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
+								<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
+								<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
+								<option value = "50" '; if ($bounds == 50){echo 'selected';} echo'>50</option>
+								<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
+							</select>
+						</div>
+					
+						<div class="buttons-container">
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+							</div>
+						</div>
+					
+						<div class="highlighted-buttons-container" style="display:none;">			     
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
+							</div>
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
+							</div>
+						</div>
 					</div>
-			        
-                    <div class="buttons-container">
-    					<div class = "span1">
-    						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
-    					</div>
-                    </div>
-                    
-                    <div class="highlighted-buttons-container" style="display:none;">			     
-    					<div class = "span1">
-    						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
-    					</div>
-                        <div class = "span1">
-                            <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
-                        </div>
-                    </div>
 				</div>
 				
 				<div class = "row ">	
@@ -288,7 +290,7 @@ echo'<!DOCTYPE html>
 			</div>
 			
 			<div class = "span2 hidden-tablet hidden-phone hideme ">
-				<div class = "row" style = "position:fixed; top:20;">
+				<div class = "row" style = "position:fixed; top:1;">
 					<div id = "adbox" class = "text-right " style="padding-left:20px;">
 						<script type="text/javascript"><!--
 						google_ad_client = "'.$ad_client.'";
