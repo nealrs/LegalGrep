@@ -3,10 +3,10 @@
 // Google parameters
 	$ad_client = "ca-pub-0448627255152048";
 	$ad_slot = "3239961821"; 
-	
-	
+	$ga_id = "UA-41047928-1";
+	$ga_domain = "nealshyam.com";
 
-// set defaults
+// set demo defaults
 	$term_a = "in*"; 
 	$term_as = "in*";
 	$term_as = preg_quote($term_a);
@@ -200,7 +200,7 @@ echo'<!DOCTYPE html>
   		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   		})(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
 
-  		ga(\'create\', \'UA-41047928-1\', \'nealshyam.com\');
+  		ga(\'create\', '.$ga_id.', '.$ga_domain.');
   		ga(\'send\', \'pageview\');
 
 	</script>
