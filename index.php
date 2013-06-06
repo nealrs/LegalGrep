@@ -223,10 +223,10 @@ echo'<!DOCTYPE html>
     
     <div class = "container ">    	
     	<div class = "row ">
-			<div class = "span10 ">
-				<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>
+			<div class = "span10 " >
+				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
 				
-				<div class = "row hideme">
+				<div class = "row hideme" ">
 					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
 					<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
 					<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
@@ -256,9 +256,9 @@ echo'<!DOCTYPE html>
                     <div class="buttons-container">
     					<div class = "span1">
     						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
-
     					</div>
                     </div>
+                    
                     <div class="highlighted-buttons-container" style="display:none;">			     
     					<div class = "span1">
     						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
@@ -267,15 +267,14 @@ echo'<!DOCTYPE html>
                             <button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
                         </div>
                     </div>
-			
 				</div>
-		
+				
 				<div class = "row ">	
 					<div class = "span10 ">
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea id="text-to-query" style= "overflow:auto;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:auto;" rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
 						<div class="hide" id ="toggle" style="padding:4px 6px;border:1px solid #fff;"></div>
 					</div>
