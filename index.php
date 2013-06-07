@@ -49,8 +49,10 @@ echo'<!DOCTYPE html>
     <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
     
     <style>
-      body {padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */}
+      body {padding-top: 43px; /* 60px to make the container go all the way to the bottom of the topbar */}
     </style>
+    
+    
 
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
@@ -200,7 +202,7 @@ echo'<!DOCTYPE html>
   		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   		})(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
 
-  		ga(\'create\', '.$ga_id.', '.$ga_domain.');
+  		ga(\'create\', "'.$ga_id.'", "'.$ga_domain.'");
   		ga(\'send\', \'pageview\');
 
 	</script>
@@ -221,6 +223,8 @@ echo'<!DOCTYPE html>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
+          	  <li><button type="button" class=" btn" onClick="window.open(\'https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!\');">Buy us a beer!</button></li>
+
           </ul>              
           </div><!--/.nav-collapse -->
         </div>
@@ -232,7 +236,7 @@ echo'<!DOCTYPE html>
 			<div class = "span10 " >
 				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
 				
-				<div style="background:red; position:fixed; top:1;">
+				<div style="background:white; position:fixed; top:1; padding-top:5px;">
 					<div class = "row hideme ">
 						<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
 						<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
@@ -277,20 +281,20 @@ echo'<!DOCTYPE html>
 					</div>
 				</div>
 				
-				<div class = "row ">	
+				<div class = "row printit" style="margin-top:70px;">	
 					<div class = "span10 ">
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea id="text-to-query" style= "overflow:auto;" rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:auto; " rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
-						<div class="hide" id ="toggle" style="padding:4px 6px;border:1px solid #fff;"></div>
+						<div class="hide " id ="toggle" style="padding:4px 6px;border:1px solid #fff; "></div>
 					</div>
 				</div>
 			</div>
 			
 			<div class = "span2 hidden-tablet hidden-phone hideme ">
-				<div class = "row" style = "position:fixed; top:1;">
+				<div class = "row" style = "position:fixed; top:1; padding-top:5px;">
 					<div id = "adbox" class = "text-right " style="padding-left:20px;">
 						<script type="text/javascript"><!--
 						google_ad_client = "'.$ad_client.'";
