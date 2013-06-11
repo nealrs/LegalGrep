@@ -2,7 +2,7 @@ LegalGrep
 =========
 
 <strong>What is LegalGrep?</strong><br/>
-LegalGrep is a legal research tool that highlights all passages within a document A containing terms B &amp; C within a set proximity of D words. The app accepts leading, trailing, and mid-word wild cards, and does birectional searches (AxxB & BxxA). When you print, make sure to turn on 'background colors and images'.
+LegalGrep is a legal research tool that highlights all passages within a document A containing terms B &amp; C within a set proximity of D words. The app accepts leading, trailing, and mid-word wild cards, and does birectional searches (AxxB & BxxA). When you print, turn on 'background colors and images'.
 
 <strong>Can I try it out?</strong><br/>
 Sure, check out the <a href="http://nealshyam.com/legal">live demo</a>.
