@@ -56,7 +56,6 @@ echo'<!DOCTYPE html>
 
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
@@ -223,8 +222,9 @@ echo'<!DOCTYPE html>
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
-              <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open(\'https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!\');"><i class="icon-beer"></i> Donate!</button></li>
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
+          	  <li><button type="button" data-toggle="tooltip" class=" tip btn" title="Venmo us a beer!" onClick="window.open(\'https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!\');">Donate!</button></li>
+
           </ul>              
           </div><!--/.nav-collapse -->
         </div>

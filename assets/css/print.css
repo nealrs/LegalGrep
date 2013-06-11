@@ -10,7 +10,7 @@
 * {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
-}
+      }
 
 .hideme {
 	display: none !important;
