@@ -251,7 +251,7 @@ echo'<!DOCTYPE html>
 						</div>
 			
 						<div class = "span3">
-							<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+							<input id ="termb" type="text" data-toggle="tooltip" title="Searches are birectional" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
 						</div>
 			
 						<div class = "span2">
