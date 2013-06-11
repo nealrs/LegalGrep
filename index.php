@@ -1,6 +1,12 @@
 <?php
 
-// set defaults
+// Google parameters
+	$ad_client = "ca-pub-0448627255152048";
+	$ad_slot = "3239961821"; 
+	$ga_id = "UA-41047928-1";
+	$ga_domain = "nealshyam.com";
+
+// set demo defaults
 	$term_a = "in*"; 
 	$term_as = "in*";
 	$term_as = preg_quote($term_a);
@@ -43,11 +49,14 @@ echo'<!DOCTYPE html>
     <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
     
     <style>
-      body {padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */}
+      body {padding-top: 55px; /* 60px to make the container go all the way to the bottom of the topbar */}
     </style>
+    
+    
 
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
@@ -62,8 +71,8 @@ echo'<!DOCTYPE html>
             // initialize plugin
             $("textarea").highlightTextarea({ caseSensitive: false });
             
-            $(".highlight_button").click(function() {
-        	  
+            $(".highlight_button").click(function() {        	
+
                 // define word RegEx
                 var wordRegex = "\\\S*[\\\s]+";
                 // define word boundry RegEx
@@ -110,14 +119,59 @@ echo'<!DOCTYPE html>
 				$("#toggle").show(0);
 				
 				// toggle print/search/edit buttons based on current visibility state.
-				//$(".toggleit").toggle(0);
+                $(".buttons-container").hide();
+				$(".highlighted-buttons-container").show();
+                // show highlighting
+                $(".highlighterContainer").show();
 								
             });
             
+            // handle edit button click event
             $(".edit_button").click(function() {
+                $(".buttons-container").show();
+                $(".highlighted-buttons-container").hide();
+                $(".highlighterContainer").hide();
             	$(".highlightTextarea").show(0);
             	$("#toggle").hide(0);
             });
+
+            var showEditMode = function(e, focus) {
+                var $editButton = $(".edit_button");
+                if ($editButton.is(":visible")) {
+                    $editButton.click();
+                    if (focus) {
+                        window.setTimeout(function(){
+                            $("#text-to-query").focus();
+                        }, 0);
+                    }
+                }                
+            };
+
+            var showHighlightMode = function() {
+                $(".highlight_button").click();
+            };
+
+            // update highlight query on keydown
+            $("#terma, #termb, #bounds").keyup(showHighlightMode);
+
+            // switch back to edit mode highlighted text is clicked
+            $("#toggle").on("mousedown click", function() {
+                showEditMode(null, true);
+            });
+
+            // switch back to edit mode highlighted text is clicked
+            $("#text-to-query").mouseout(showHighlightMode);
+
+            // execute query when bounds change
+            $("#bounds").change(showHighlightMode);
+
+            // handle print click event
+            $(".print_button").click(function() {
+                window.print();
+            });
+            
+            // initliaze highlight again
+            showHighlightMode();
         });
     </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
@@ -149,7 +203,7 @@ echo'<!DOCTYPE html>
   		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   		})(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
 
-  		ga(\'create\', \'UA-41047928-1\', \'nealshyam.com\');
+  		ga(\'create\', "'.$ga_id.'", "'.$ga_domain.'");
   		ga(\'send\', \'pageview\');
 
 	</script>
@@ -169,9 +223,9 @@ echo'<!DOCTYPE html>
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
+              <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open(\'https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!\');"><i class="icon-beer"></i> Donate!</button></li>
               <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
-
-            </ul>
+          </ul>              
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -179,66 +233,73 @@ echo'<!DOCTYPE html>
     
     <div class = "container ">    	
     	<div class = "row ">
-			<div class = "span10 ">
-				<legend class="hideme">Highlight all passages containing terms A & B within a proximity of C words.</legend>
+			<div class = "span10 " >
+				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
 				
-				<div class = "row hideme">
-					<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
-					<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
-					<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
-					<div class = "span2"><p class="text-left">words of each other.</p></div>	
-				</div>
+				<div>
+					<div class = "row hideme ">
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
+						<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
+						<div class = "span2"><p class="text-left">words of each other.</p></div>	
+					</div>
 		
-				<div class = "row hideme">	
+					<div class = "row hideme">	
 					
-					<div class = "span3">
-						<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
-					</div>
+						<div class = "span3">
+							<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
+						</div>
 			
-					<div class = "span3">
-						<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
-					</div>
+						<div class = "span3">
+							<input id ="termb" type="text" data-toggle="tooltip" title="passage must begin with term A and end with term B" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+						</div>
 			
-					<div class = "span2">
-						<select id ="bounds" name="bounds" class="input-block-level">
-							<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
-							<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
-							<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
-							<option value = "50" '; if ($bounds == 50){echo 'selected';} echo'>50</option>
-							<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
-						</select>
+						<div class = "span2">
+							<select id ="bounds" name="bounds" class="input-block-level">
+								<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
+								<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
+								<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
+								<option value = "50" '; if ($bounds == 50){echo 'selected';} echo'>50</option>
+								<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
+							</select>
+						</div>
+					
+						<div class="buttons-container">
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+							</div>
+						</div>
+					
+						<div class="highlighted-buttons-container" style="display:none;">			     
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
+							</div>
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
+							</div>
+						</div>
 					</div>
-			
-					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
-
-					</div>
-			
-					<div class = "span1">
-						<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
-					</div>
-			
 				</div>
-		
+				
 				<div class = "row ">	
 					<div class = "span10 ">
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
 					
-						<textarea style= "overflow:hidden;" rows="22" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:auto; " rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
 						
-						<div class="hide" id ="toggle"></div>
+						<div class="hide " id ="toggle" style="padding:4px 6px;border:1px solid #fff; "></div>
 					</div>
 				</div>
 			</div>
 			
-			<div class = "span2 hidden-tablet hidden-phone hideme">
-				<div class = "row">
-					<div id = "adbox" class = "text-right">
+			<div class = "span2 hidden-tablet hidden-phone hideme ">
+				<div class = "row" style = "position:fixed; top:1; padding-top:5px;">
+					<div id = "adbox" class = "text-right " style="padding-left:20px;">
 						<script type="text/javascript"><!--
-						google_ad_client = "ca-pub-0448627255152048";
+						google_ad_client = "'.$ad_client.'";
 						/* Legal Grep */
-						google_ad_slot = "3239961821";
+						google_ad_slot = "'.$ad_slot.'";
 						google_ad_width = 160;
 						google_ad_height = 600;
 						//-->
