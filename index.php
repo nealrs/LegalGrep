@@ -49,7 +49,7 @@ echo'<!DOCTYPE html>
     <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
     
     <style>
-      body {padding-top: 43px; /* 60px to make the container go all the way to the bottom of the topbar */}
+      body {padding-top: 55px; /* 60px to make the container go all the way to the bottom of the topbar */}
     </style>
     
     
@@ -236,7 +236,7 @@ echo'<!DOCTYPE html>
 			<div class = "span10 " >
 				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
 				
-				<div style="background:white; position:fixed; top:1; padding-top:5px;">
+				<div>
 					<div class = "row hideme ">
 						<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
 						<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
@@ -281,7 +281,7 @@ echo'<!DOCTYPE html>
 					</div>
 				</div>
 				
-				<div class = "row printit" style="margin-top:70px;">	
+				<div class = "row ">	
 					<div class = "span10 ">
 
 						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
