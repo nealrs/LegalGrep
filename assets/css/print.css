@@ -1,16 +1,10 @@
-@page  { 
+@page  
+{ 
     size: auto;   /* auto is the initial value */ 
+
     /* this affects the margin in the printer settings */ 
     margin: 10mm 10mm 10mm 10mm;  
-    
-    color: #000;
-    background: #fff;
 } 
-
-* {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-}
 
 .hideme {
 	display: none !important;
@@ -27,7 +21,57 @@ body {
 	
 	margin: 0px;
 }
+/* 
+.highlightTextarea {
+	width: 100% !important; min-height: 100%;
+	overflow:visible !important;
+ 	padding-right: 0px; 
+ 	padding-left: 0px;
+ 	top: 0px;
+ 	border: 0px;
+ 	color: black !important;
+}
+
+.highlightTextarea .lprint {
+	width: 100% !important; height: 100%;
+	overflow:visible !important;
+ 	padding-right: 0px; 
+ 	padding-left: 0px;
+ 	top: 0px;
+ 	border: 0px;
+ 	color: black !important;
+}
+
+
+.highlightTextarea .highlighter .lprint{
+	color: black !important;
+	width: 100% !important;
+	height: 100% !important;
+	top: 0px !important;
+}
+
+
+.highlighterContainer .lprint{
+	width: 100% !important; 
+	height: 100% !important;
+ 	padding-right: 0px; 
+ 	padding-left: 0px;
+ 	top: 0px;
+ 	border: 0px;
+}
+*/
 
 .highlightTextarea {
-	display:none;
+	display:none !important;
 }
+
+/*.highlightTextarea .lprint{
+	display:none;
+}*/
+
+textarea {
+	display:none !important;
+}
+
+
+
