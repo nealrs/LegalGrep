@@ -59,8 +59,8 @@
                 // replace wildcards (*) with wildcard RegEx on search terms
                 // the wildcard will be escaped from the preg_quote
                 // function, so search for escaped version
-                termA = termA.replace(/\\\\\*/g, "[\\\S]*");
-                termB = termB.replace(/\\\\\*/g, "[\\\S]*");
+                termA = termA.replace(/\\\*/g, "[\\\S]*");
+                termB = termB.replace(/\\\*/g, "[\\\S]*");
 
                 // append word boundary regex to terms
                 termA += wordBoundary;
