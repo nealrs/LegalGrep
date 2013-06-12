@@ -15,8 +15,6 @@
       body {padding-top: 55px; /* 60px to make the container go all the way to the bottom of the topbar */}
     </style>
     
-    
-
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
     <link href="assets/css/print.css" rel="stylesheet" media="print" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
@@ -138,12 +136,8 @@
         });
     </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
-
-	<!---- SHARE THIS BLOCK ------->
-	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-	<script type="text/javascript">stLight.options({publisher: "ur-fac0377b-c7eb-18d4-b99f-7057b5df1fa", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
-	<!---- END SHARE THIS BLOCK --->
-
+	
+	
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.js"></script>
@@ -186,8 +180,8 @@
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
-              <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open(\'https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!\');"><i class="icon-beer"></i> Donate!</button></li>
-              <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class=\'st_facebook_hcount\' displayText=\'Facebook\'></span><span class=\'st_twitter_hcount\' displayText=\'Tweet\'></span><span class=\'st_linkedin_hcount\' displayText=\'LinkedIn\'></span></a></li>
+              <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open('https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!');"><i class="icon-beer"></i> Donate!</button></li>
+              <!---<li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class='st_facebook_hcount' displayText='Facebook'></span><span class='st_twitter_hcount' displayText='Tweet'></span><span class='st_linkedin_hcount' displayText='LinkedIn'></span></a></li>--->
           </ul>              
           </div><!--/.nav-collapse -->
         </div>
@@ -210,11 +204,11 @@
 					<div class = "row hideme">	
 					
 						<div class = "span3">
-							<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="'.$term_a.'">
+							<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="in*">
 						</div>
 			
 						<div class = "span3">
-							<input id ="termb" type="text" data-toggle="tooltip" title="Searches are birectional" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="'.$term_b.'">
+							<input id ="termb" type="text" data-toggle="tooltip" title="Searches are birectional" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="*em*">
 						</div>
 			
 						<div class = "span2">
@@ -247,9 +241,18 @@
 				<div class = "row ">	
 					<div class = "span10 ">
 
-						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong>'.$term_a.'</strong> and <strong>'.$term_b.'</strong> appear within <strong>'.$bounds.'</strong> words of each other.</p><hr/></div>
+						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong><script language="JavaScript">document.write($("#terma").val())</script></strong> and <strong><script language="JavaScript">document.write($("#termb").val())</script></strong> appear within <strong><script language="JavaScript">document.write($("#bounds").val())</script></strong> words of each other.</p><hr/></div>
 					
-						<textarea id="text-to-query" style= "overflow:auto; " rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">'.$input_text.'</textarea>
+						<textarea id="text-to-query" style= "overflow:auto; " rows="25" class="input-block-level" name="input_text" placeholder="Paste source text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum dolor sed dui pretium sit amet aliquam ipsum fringilla. Fusce eget sem et orci feugiat interdum in ac dui. Integer nec diam semper massa vestibulum egestas vel venenatis ante. Curabitur sollicitudin dui non nisl vestibulum vestibulum varius neque convallis. Maecenas sem sem, fringilla ut tincidunt convallis, accumsan et leo. Integer ultrices nisi vitae nulla rhoncus vestibulum. In et arcu neque.
+
+Nam pretium tellus ac libero sollicitudin ut bibendum tortor fermentum. Morbi sagittis urna at nisi ultrices feugiat. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit accumsan dignissim. Sed sagittis augue quis purus sodales sed pulvinar ipsum mattis. Curabitur ac felis nisl, eget scelerisque nisl. Etiam massa elit, imperdiet eu placerat vitae, interdum ullamcorper quam. Donec posuere sem vel mi elementum facilisis. Sed nec mauris sed massa euismod ornare.
+
+Pellentesque tellus turpis, fringilla tempus laoreet eu, malesuada non enim. Nullam eu massa orci, a sagittis massa. Praesent ligula sapien, euismod sed dapibus quis, imperdiet vitae justo. Cras purus purus, placerat eu pretium sed, facilisis quis lectus. Vivamus quis hendrerit arcu. Sed vitae risus sed diam imperdiet rhoncus. Curabitur euismod sem id leo consequat sed porttitor mauris tristique. Sed ante ante, aliquet sit amet ornare nec, viverra vitae sapien. Suspendisse fringilla, nulla in viverra venenatis, nisi lectus porttitor nulla, sed dignissim quam nunc vel eros. Integer lobortis odio lacinia elit sagittis rutrum vel vel est. Fusce imperdiet tempus neque sed aliquam. Integer sed odio libero, a faucibus mi. In vel eros urna, quis dapibus nunc. Nulla facilisi. Curabitur molestie est non metus tincidunt adipiscing. Etiam sollicitudin scelerisque nibh, a gravida lacus facilisis ut.
+
+Aliquam et arcu nec ante fermentum placerat id quis neque. Vivamus cursus nunc ac nibh viverra quis accumsan tortor gravida. Proin viverra mi eu erat vulputate vehicula. Donec ultricies, nunc ut pharetra rhoncus, nulla eros pharetra justo, non convallis diam ipsum ut arcu. Proin id lacus nisl. Fusce lacus eros, pharetra non porta sed, placerat pellentesque nulla. Fusce sit amet cursus diam. Ut a nisl non elit feugiat sollicitudin quis id orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+Nam consequat sagittis mollis. Sed faucibus egestas nunc, non rutrum elit fringilla ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam iaculis purus eu nibh aliquet et facilisis enim interdum. Aliquam convallis laoreet elit et volutpat. Duis posuere blandit auctor. Integer tincidunt tellus gravida dui fringilla in pellentesque purus ultricies. Nunc a tempus tortor. Aenean eu nunc in justo venenatis porta. Etiam viverra quam vitae odio aliquam sed accumsan magna dignissim. Aliquam erat volutpat. Aliquam feugiat ultrices tempor. Sed in nisi elit. Nulla facilisi. Mauris orci est, pharetra in pellentesque non, consectetur nec ante.
+</textarea>
 						
 						<div class="hide " id ="toggle" style="padding:4px 6px;border:1px solid #fff; "></div>
 					</div>
@@ -259,13 +262,12 @@
 			<div class = "span2 hidden-tablet hidden-phone hideme ">
 				<div class = "row" style = "position:fixed; top:1; padding-top:5px;">
 					<div id = "adbox" class = "text-right " style="padding-left:20px;">
-						<script type="text/javascript"><!--
+						<script type="text/javascript">
 						google_ad_client = "ca-pub-0448627255152048";
 						/* Legal Grep */
 						google_ad_slot = "3239961821";
 						google_ad_width = 160;
 						google_ad_height = 600;
-						//-->
 						</script>
 						
 						<script type="text/javascript"
