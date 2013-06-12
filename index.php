@@ -137,6 +137,10 @@
     </script>
 	<!---- END HIGHLIGHT TEXT AREA ---->
 	
+	<!---- SHARE THIS BLOCK ------->
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "ur-fac0377b-c7eb-18d4-b99f-7057b5df1fa", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+	<!---- END SHARE THIS BLOCK --->
 	
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -181,7 +185,7 @@
               <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
               <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
               <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open('https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!');"><i class="icon-beer"></i> Donate!</button></li>
-              <!---<li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class='st_facebook_hcount' displayText='Facebook'></span><span class='st_twitter_hcount' displayText='Tweet'></span><span class='st_linkedin_hcount' displayText='LinkedIn'></span></a></li>--->
+              <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class='st_facebook_hcount' displayText='Facebook'></span><span class='st_twitter_hcount' displayText='Tweet'></span><span class='st_linkedin_hcount' displayText='LinkedIn'></span></a></li>
           </ul>              
           </div><!--/.nav-collapse -->
         </div>
