@@ -1,41 +1,4 @@
-<?php
-
-// Google parameters
-	$ad_client = "ca-pub-0448627255152048";
-	$ad_slot = "3239961821"; 
-	$ga_id = "UA-41047928-1";
-	$ga_domain = "nealshyam.com";
-
-// set demo defaults
-	$term_a = "in*"; 
-	$term_as = "in*";
-	$term_as = preg_quote($term_a);
-	$term_as = str_replace('*', '[\\\S]*', $term_as);
-
-	$term_b = "*em*"; 
-	$term_bs = "*em*";
-	$term_bs = preg_quote($term_b);
-	$term_bs = str_replace('*', '[\\\S]*', $term_bs);
-	
-	$bounds = 10;
-
-	$input_text = "
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum dolor sed dui pretium sit amet aliquam ipsum fringilla. Fusce eget sem et orci feugiat interdum in ac dui. Integer nec diam semper massa vestibulum egestas vel venenatis ante. Curabitur sollicitudin dui non nisl vestibulum vestibulum varius neque convallis. Maecenas sem sem, fringilla ut tincidunt convallis, accumsan et leo. Integer ultrices nisi vitae nulla rhoncus vestibulum. In et arcu neque.
-
-Nam pretium tellus ac libero sollicitudin ut bibendum tortor fermentum. Morbi sagittis urna at nisi ultrices feugiat. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit accumsan dignissim. Sed sagittis augue quis purus sodales sed pulvinar ipsum mattis. Curabitur ac felis nisl, eget scelerisque nisl. Etiam massa elit, imperdiet eu placerat vitae, interdum ullamcorper quam. Donec posuere sem vel mi elementum facilisis. Sed nec mauris sed massa euismod ornare.
-
-Pellentesque tellus turpis, fringilla tempus laoreet eu, malesuada non enim. Nullam eu massa orci, a sagittis massa. Praesent ligula sapien, euismod sed dapibus quis, imperdiet vitae justo. Cras purus purus, placerat eu pretium sed, facilisis quis lectus. Vivamus quis hendrerit arcu. Sed vitae risus sed diam imperdiet rhoncus. Curabitur euismod sem id leo consequat sed porttitor mauris tristique. Sed ante ante, aliquet sit amet ornare nec, viverra vitae sapien. Suspendisse fringilla, nulla in viverra venenatis, nisi lectus porttitor nulla, sed dignissim quam nunc vel eros. Integer lobortis odio lacinia elit sagittis rutrum vel vel est. Fusce imperdiet tempus neque sed aliquam. Integer sed odio libero, a faucibus mi. In vel eros urna, quis dapibus nunc. Nulla facilisi. Curabitur molestie est non metus tincidunt adipiscing. Etiam sollicitudin scelerisque nibh, a gravida lacus facilisis ut.
-
-Aliquam et arcu nec ante fermentum placerat id quis neque. Vivamus cursus nunc ac nibh viverra quis accumsan tortor gravida. Proin viverra mi eu erat vulputate vehicula. Donec ultricies, nunc ut pharetra rhoncus, nulla eros pharetra justo, non convallis diam ipsum ut arcu. Proin id lacus nisl. Fusce lacus eros, pharetra non porta sed, placerat pellentesque nulla. Fusce sit amet cursus diam. Ut a nisl non elit feugiat sollicitudin quis id orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-Nam consequat sagittis mollis. Sed faucibus egestas nunc, non rutrum elit fringilla ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam iaculis purus eu nibh aliquet et facilisis enim interdum. Aliquam convallis laoreet elit et volutpat. Duis posuere blandit auctor. Integer tincidunt tellus gravida dui fringilla in pellentesque purus ultricies. Nunc a tempus tortor. Aenean eu nunc in justo venenatis porta. Etiam viverra quam vitae odio aliquam sed accumsan magna dignissim. Aliquam erat volutpat. Aliquam feugiat ultrices tempor. Sed in nisi elit. Nulla facilisi. Mauris orci est, pharetra in pellentesque non, consectetur nec ante.
-";
-
-$wordRegex = '\\\S*[\\\s]+';
-$bookmarklet = "javascript:(function(){var t=window.getSelection?window.getSelection().toString():document.selection.createRange().text;t=encodeURIComponent(t);window.location='http://nealshyam.com/legal/index.php?input_text='+t;})()";
-
-// Output
-echo'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -198,13 +161,13 @@ echo'<!DOCTYPE html>
   
  	<!-- BEGIN Google Analytics -->
 	<script>
-  		(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  		})(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
+  		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  		ga(\'create\', "'.$ga_id.'", "'.$ga_domain.'");
-  		ga(\'send\', \'pageview\');
+  		ga('create', "UA-41047928-1", "nealshyam.com");
+  		ga('send', 'pageview');
 
 	</script>
  	<!-- END Google Analytics -->
@@ -217,7 +180,7 @@ echo'<!DOCTYPE html>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a data-toggle="tooltip" title="A friend asked if this was possible. It is." class = "tip brand" href="#">LegalGrep</a>
+          <a data-toggle="tooltip" title="A friend asked if this was possible. It is." class = "tip brand" href="#">LegalGrep&trade;</a>
           <div class="nav-collapse collapse">
           <ul class="nav">
               <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
@@ -256,11 +219,11 @@ echo'<!DOCTYPE html>
 			
 						<div class = "span2">
 							<select id ="bounds" name="bounds" class="input-block-level">
-								<option value = "5" '; if ($bounds == 5){echo 'selected';} echo'>5</option>
-								<option value = "10" '; if ($bounds == 10){echo 'selected';} echo'>10</option>
-								<option value = "25" '; if ($bounds == 25){echo 'selected';} echo'>25</option>
-								<option value = "50" '; if ($bounds == 50){echo 'selected';} echo'>50</option>
-								<option value = "100" '; if ($bounds == 100){echo 'selected';} echo'>100</option>
+								<option value = "5">5</option>
+								<option value = "10" selected>10</option>
+								<option value = "25">25</option>
+								<option value = "50">50</option>
+								<option value = "100">100</option>
 							</select>
 						</div>
 					
@@ -297,9 +260,9 @@ echo'<!DOCTYPE html>
 				<div class = "row" style = "position:fixed; top:1; padding-top:5px;">
 					<div id = "adbox" class = "text-right " style="padding-left:20px;">
 						<script type="text/javascript"><!--
-						google_ad_client = "'.$ad_client.'";
+						google_ad_client = "ca-pub-0448627255152048";
 						/* Legal Grep */
-						google_ad_slot = "'.$ad_slot.'";
+						google_ad_slot = "3239961821";
 						google_ad_width = 160;
 						google_ad_height = 600;
 						//-->
@@ -319,5 +282,4 @@ echo'<!DOCTYPE html>
     </div>
 
   </body>
-</html>';
-?>
+</html>
