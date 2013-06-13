@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>LegalGrep</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content = "LegalGrep highlights all passages which contain two key phrases within a set proximity.">
+    <meta name="author" content = "Neal Shyam and Eric Justusson">
+
+    <!-- CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" MEDIA="handheld, screen"/>
+    
+    <style>
+      body {padding-top: 55px; /* 60px to make the container go all the way to the bottom of the topbar */}
+    </style>
+    
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">    
+    <link href="assets/css/print.css" rel="stylesheet" media="print" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	
+	<!---- BEGIN HIGHLIGHT TEXT AREA ---->	
+	<link type="text/css" rel="stylesheet" href="assets/css/jquery.highlighttextarea.css" />
+	<script type="text/javascript" src = "assets/js/jquery.highlighttextarea.js"></script>
+	<script type="text/javascript" src = "assets/js/preg_quote.js"></script>
+	<script type="text/javascript" src = "assets/js/legalgrep_func.js"></script>
+	<script type="text/javascript" src = "assets/js/underscore-min.js"></script>
+	
+	<!---- END HIGHLIGHT TEXT AREA ---->
+	
+	<!---- SHARE THIS BLOCK ------->
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "ur-fac0377b-c7eb-18d4-b99f-7057b5df1fa", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+	<!---- END SHARE THIS BLOCK --->
+	
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  </head>
+
+  <body>
+  
+ 	<!-- BEGIN Google Analytics -->
+	<script>
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  		ga('create', "UA-41047928-1", "nealshyam.com");
+  		ga('send', 'pageview');
+
+	</script>
+ 	<!-- END Google Analytics -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top hideme">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a data-toggle="tooltip" title="A friend asked if this was possible. It is." class = "tip brand" href="#">LegalGrep&trade;</a>
+          <div class="nav-collapse collapse">
+          <ul class="nav">
+              <li><a class = "tip" data-toggle="tooltip" title="Neal & Eric work at ADstruc" href="#">&copy; 2013 Neal [App] & Eric [RegEx]</a></li>
+              <li><a class = "tip" data-toggle="tooltip" title="Got feedback?" href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs + Questions</a></li>
+              <!---<li><a class = "tip" data-toggle="tooltip" title="This bookmarklet runs LegalGrep on any selected text" href="'.$bookmarklet.'">Bookmarklet</a></li>--->
+              <li><button type="button" data-toggle="tooltip" class=" tip btn btn-success" title="Buy us a beer!" onClick="window.open('https://venmo.com/?txn=donate&recipients=nealrs&amount=10&note=I%20love%20LegalGrep!');"><i class="icon-beer"></i> Donate!</button></li>
+              <li><a class = "tip" data-toggle="tooltip" title="Help us get that social juice!"><span class='st_facebook_hcount' displayText='Facebook'></span><span class='st_twitter_hcount' displayText='Tweet'></span><span class='st_linkedin_hcount' displayText='LinkedIn'></span></a></li>
+          </ul>              
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    <div class = "container ">    	
+    	<div class = "row ">
+			<div class = "span10 " >
+				<!---<legend class="hideme">Highlight all passages containing phrases A & B within a proximity of C words.</legend>--->
+				
+				<div>
+					<div class = "row hideme ">
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">A</span> Highlight passages where <i class="icon-chevron-down"></i></p></div>
+						<div class = "span3"><p class="text-left"><span class="badge badge-success">B</span> and <i class="icon-chevron-down"></i></p></div>
+						<div class = "span2"><p class="text-left"><span class="badge badge-success">C</span> appear within <i class="icon-chevron-down"></i></p> </div>	
+						<div class = "span2"><p class="text-left">words of each other.</p></div>	
+					</div>
+		
+					<div class = "row hideme">	
+					
+						<div class = "span3">
+							<input id ="terma" type="text"  data-toggle="tooltip" title="Leading & trailing wildcards (*) accepted" class=" tip input-block-level" placeholder="Enter Term A" name = "term_a" value ="in*">
+						</div>
+			
+						<div class = "span3">
+							<input id ="termb" type="text" data-toggle="tooltip" title="Searches are birectional" class=" tip input-block-level" placeholder="Enter Term B" name = "term_b" value ="*em*">
+						</div>
+			
+						<div class = "span2">
+							<select id ="bounds" name="bounds" class="input-block-level">
+								<option value = "5">5</option>
+								<option value = "10" selected>10</option>
+								<option value = "25">25</option>
+								<option value = "50">50</option>
+								<option value = "100">100</option>
+							</select>
+						</div>
+					
+						<div class="buttons-container">
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Highlight" class=" highlight_button tip btn btn-primary btn-block"><i class=" icon-search icon-white"></i></button>
+							</div>
+						</div>
+					
+						<div class="highlighted-buttons-container" style="display:none;">			     
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Edit" class=" edit_button tip btn btn-inverse btn-block"><i class=" icon-pencil icon-white"></i></button>
+							</div>
+							<div class = "span1">
+								<button type="button" data-toggle="tooltip" title="Print" class=" print_button tip btn btn-primary btn-block"><i class=" icon-print icon-white"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class = "row ">	
+					<div class = "span10 ">
+
+						<div class = "hide"><p>LegalGrep &copy; 2013 <a href="http://nealshyam.com/legal">Neal & Eric</a> &nbsp;<a href="mailto:me@nealshyam.com?subject=LegalGrep">Bugs & Questions</a>. </p><p>Highlight all passages where <strong><span id="termAp"></span></strong> and <strong><span id="termBp"></span></strong> appear within <strong><span id="boundsp"></span></strong> words of each other.</p><hr/></div>
+					
+						<textarea id="text-to-query" style= "overflow:auto; " rows="25" class="input-block-level" name="input_text" placeholder="Paste source text"></textarea>
+						
+						<div class="hide " id ="toggle" style="padding:4px 6px;border:1px solid #fff; "></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class = "span2 hidden-tablet hidden-phone hideme ">
+				<div class = "row" style = "position:fixed; top:1; padding-top:5px;">
+					<div id = "adbox" class = "text-right " style="padding-left:20px;">
+						<script type="text/javascript">
+						google_ad_client = "ca-pub-0448627255152048";
+						/* Legal Grep */
+						google_ad_slot = "3239961821";
+						google_ad_width = 160;
+						google_ad_height = 600;
+						</script>
+						
+						<script type="text/javascript"
+							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+						
+					</div>
+				</div>
+			</div>
+		<script>$(".tip").tooltip({placement:"bottom"})</script>	
+    	</div>
+    	
+    	
+    </div>
+
+  </body>
+</html>
