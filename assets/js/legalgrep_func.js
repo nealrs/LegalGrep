@@ -96,8 +96,8 @@ $(document).ready(function() {
                 $(".highlight_button").click();
             };
 
-            // update highlight query on keydown
-            $("#terma, #termb, #bounds").keyup(_.throttle(showHighlightMode, 250));
+            // update highlight query on keyup
+            $("#terma, #termb").keyup(_.debounce(showHighlightMode, 1000));
 
             // switch back to edit mode highlighted text is clicked
             $("#toggle").on("mousedown click", function() {
