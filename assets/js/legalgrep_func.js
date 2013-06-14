@@ -68,6 +68,20 @@ $(document).ready(function() {
                 document.getElementById('termAp').innerHTML = termAp;
                 document.getElementById('termBp').innerHTML = termBp;
                 document.getElementById('boundsp').innerHTML = boundsp;
+                
+                // update modal variables (count # of words entered, and number of spans/classes with .highlight class
+                var raw_wordcount = $('#text-to-query').val().split(/\s/g).length;
+                var highlight_wordcount = (document.getElementsByClassName("highlight").length)/2;
+                
+                // now do some random math on them to make the numbers beleiveable. (how much ink in a highlighter? How many hours to review a word?)
+                var saved_highlighters = highlight_wordcount;
+                var saved_hours = raw_wordcount;
+                
+                document.getElementById('num_highlighters').innerHTML = saved_highlighters;
+                document.getElementById('num_hours').innerHTML = saved_hours;
+                
+                //document.getElementById('num_highlighters').innerHTML = Math.floor(Math.random()*11);
+                //document.getElementById('num_hours').innerHTML = Math.floor(Math.random()*51);
 								
             });
             
