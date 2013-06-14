@@ -75,7 +75,7 @@ $(document).ready(function() {
                 
                 //var saved_highlighters = highlight_wordcount;
                 var saved_hours = Math.round((raw_wordcount/6000)*10)/10;
-                var saved_dollars = saved_hours*400;
+                var saved_dollars = Math.round(saved_hours*400);
                 
                 document.getElementById('num_hours').innerHTML = saved_hours;
                 document.getElementById('num_dollars').innerHTML = saved_dollars;
