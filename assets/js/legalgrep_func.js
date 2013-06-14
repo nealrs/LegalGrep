@@ -111,7 +111,7 @@ $(document).ready(function() {
             $("#bounds").change(showHighlightMode);
 
             // handle print click event
-            $(".print_button").click(function() {
+            $(".print_button").click(function() {                
                 window.print();
             });
             
