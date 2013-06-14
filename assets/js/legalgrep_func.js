@@ -73,12 +73,12 @@ $(document).ready(function() {
                 var raw_wordcount = $('#text-to-query').val().split(/\s/g).length;
                 var highlight_wordcount = (document.getElementsByClassName("highlight").length)/2;
                 
-                // now do some random math on them to make the numbers beleiveable. (how much ink in a highlighter? How many hours to review a word?)
-                var saved_highlighters = highlight_wordcount;
-                var saved_hours = raw_wordcount;
+                //var saved_highlighters = highlight_wordcount;
+                var saved_hours = Math.round((raw_wordcount/6000)*10)/10;
+                var saved_dollars = saved_hours*400;
                 
-                document.getElementById('num_highlighters').innerHTML = saved_highlighters;
                 document.getElementById('num_hours').innerHTML = saved_hours;
+                document.getElementById('num_dollars').innerHTML = saved_dollars;
                 
                 //document.getElementById('num_highlighters').innerHTML = Math.floor(Math.random()*11);
                 //document.getElementById('num_hours').innerHTML = Math.floor(Math.random()*51);
