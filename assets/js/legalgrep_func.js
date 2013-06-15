@@ -74,14 +74,11 @@ $(document).ready(function() {
                 var highlight_wordcount = (document.getElementsByClassName("highlight").length)/2;
                 
                 //var saved_highlighters = highlight_wordcount;
-                var saved_hours = Math.round((raw_wordcount/6000)*10)/10;
+                var saved_hours = Math.round((raw_wordcount/3000)*10)/10;
                 var saved_dollars = Math.round(saved_hours*400);
                 
                 document.getElementById('num_hours').innerHTML = saved_hours;
                 document.getElementById('num_dollars').innerHTML = saved_dollars;
-                
-                //document.getElementById('num_highlighters').innerHTML = Math.floor(Math.random()*11);
-                //document.getElementById('num_hours').innerHTML = Math.floor(Math.random()*51);
 								
             });
             
