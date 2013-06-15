@@ -68,6 +68,17 @@ $(document).ready(function() {
                 document.getElementById('termAp').innerHTML = termAp;
                 document.getElementById('termBp').innerHTML = termBp;
                 document.getElementById('boundsp').innerHTML = boundsp;
+                
+                // update modal variables (count # of words entered, and number of spans/classes with .highlight class
+                var raw_wordcount = $('#text-to-query').val().split(/\s/g).length;
+                var highlight_wordcount = (document.getElementsByClassName("highlight").length)/2;
+                
+                //var saved_highlighters = highlight_wordcount;
+                var saved_hours = Math.round((raw_wordcount/3000)*10)/10;
+                var saved_dollars = Math.round(saved_hours*400);
+                
+                document.getElementById('num_hours').innerHTML = saved_hours;
+                document.getElementById('num_dollars').innerHTML = saved_dollars;
 								
             });
             
@@ -111,7 +122,7 @@ $(document).ready(function() {
             $("#bounds").change(showHighlightMode);
 
             // handle print click event
-            $(".print_button").click(function() {
+            $(".print_button").click(function() {                
                 window.print();
             });
             
